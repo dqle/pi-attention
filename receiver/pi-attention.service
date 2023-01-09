@@ -3,9 +3,8 @@ Description=Pi Attention Flask
 After=network.target
 
 [Service]
-User=pi
 WorkingDirectory=/home/pi/pi-attention/receiver
-ExecStart=puthon3 /home/pi/pi-attention/receiver/main.py
+ExecStart=python3 /home/pi/pi-attention/receiver/main.py
 Restart=always
 
 [Install]
