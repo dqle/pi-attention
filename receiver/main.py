@@ -70,12 +70,14 @@ def text_discord():
     text = "DISCORD"
     color = [88, 101, 242]
     scroll_text (text, color)
+    return "DISCORD message received :)"
 
 @app.route('/api/text-come-over', methods=['POST'])
 def text_come_over():
     text = "COME OVER <3"
     color = [255, 10, 10]
     scroll_text (text, color)
+    return "COME OVER <3 message received :)"
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80)
