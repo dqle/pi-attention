@@ -27,8 +27,6 @@ def scroll_text (text, color):
     unicornhatmini.set_rotation(rotation)
     display_width, display_height = unicornhatmini.get_shape()
 
-    print("{}x{}".format(display_width, display_height))
-
     # Load 5x7 pixel font
     font = ImageFont.truetype("5x7.ttf", 8)
 
@@ -76,7 +74,7 @@ def text_discord():
 @app.route('/api/text-come-over', methods=['POST'])
 def text_come_over():
     text = "COME OVER <3"
-    color = [250, 128, 114]
+    color = [255, 10, 10]
     scroll_text (text, color)
 
 if __name__ == '__main__':
