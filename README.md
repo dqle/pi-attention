@@ -73,7 +73,11 @@ On the Raspberry Pi Zero W, SSH in and perform the following steps:
 ```
 sudo raspi-config nonint do_spi 0
 ```
-2. Allow pip packages to be installed in global context
+2. Install `python3-pil`
+```
+ sudo apt-get install python3-pil
+```
+3. Allow pip packages to be installed in global context
 ```
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 ```
