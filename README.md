@@ -58,13 +58,6 @@ For both the transmitter and receiver, image the raspberry pi micro sd card usin
 
 For OS, use the **Raspberry Pi OF Lite (32-bit)** version. Make sure that both are using the **_SAME WIFI NETWORK_**
 
-Once they're image and you're able to ssh in, install the following packages:
-
-```
-sudo apt-get update
-sudo apt-get install python3 python3-pip git
-```
-
 # Receiver Setup
 
 On the Raspberry Pi Zero W, SSH in and perform the following steps:
@@ -73,36 +66,37 @@ On the Raspberry Pi Zero W, SSH in and perform the following steps:
 ```
 sudo raspi-config nonint do_spi 0
 ```
-2. Install `python3-pil`
+2. Install packages
 ```
- sudo apt-get install python3-pil
+sudo apt-get update
+sudo apt-get install python3 python3-pip git python3-pil
 ```
 3. Allow pip packages to be installed in global context
 ```
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 ```
-3. Install Unicorn Mini Hat library. Select `n` when it gives option to copy examples
+4. Install Unicorn Mini Hat library. Select `n` when it gives option to copy examples
 ```
 git clone https://github.com/pimoroni/unicornhatmini-python
 cd unicornhatmini-python
 sudo ./install.sh
 ```
-3. Clone this repo
+5. Clone this repo
 ```
 cd ~/
 git clone https://github.com/dqle/pi-attention.git
 ```
-4. Install python packages
+6. Install python packages
 ```
 cd pi-attention/receiver/
 sudo pip3 install -r requirements.txt
 ```
-5. Add the program as a service
+7. Add the program as a service
 ```
 sudo cp pi-attention.service /etc/systemd/system/
 sudo systemctl daemon-reload
 ```
-6. Enable and start service -- Verify that the service is starting properly
+8. Enable and start service -- Verify that the service is starting properly
 ```
 sudo systemctl enable pi-attention
 sudo systemctl start pi-attention
@@ -158,7 +152,13 @@ What this does is that it'll send a KeyboardInterrupt before running the keyboar
 
 On the Raspberry Pi 4, SSH in and perform the following steps:
 
-1. Enable Console Autologin
+1. Install packages
+```
+sudo apt-get update
+sudo apt-get install python3 python3-pip git
+```
+
+2. Enable Console Autologin
 ```
 Run: sudo raspi-config
 Choose option: 1 System Options
@@ -166,29 +166,36 @@ Choose option: S5 Boot / Auto Login
 Choose option: B2 Console Autologin
 Select Finish, but do not reboot
 ```
-2. Set Font and Font Size
+
+3. Set Font and Font Size
 ```
 sudo sed -i "s|FONTFACE=.*|FONTFACE=\"Terminus\"|g" /etc/default/console-setup
 sudo sed -i "s|FONTSIZE=.*|FONTSIZE=\"14x28\"|g" /etc/default/console-setup
 ```
-3. Clone this repo
+
+4. Clone this repo
 ```
 git clone https://github.com/dqle/pi-attention.git
 ```
 
-4. Set Keybinds and startup settings 
+5. Set Keybinds and startup settings 
 ```
 cd pi-attention/transmitter/
 chmod +x set-keybind.sh
 ./set-keybind.sh
 ```
 
-5. Install Python3 packages
+6. Allow pip packages to be installed in global context
+```
+sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+```
+
+7. Install Python3 packages
 ```
 pip3 install -r requirements.txt
 ```
 
-6. Install the LCD screen driver
+8. Install the LCD screen driver
 ```
 cd ~/
 git clone https://github.com/goodtft/LCD-show.git
