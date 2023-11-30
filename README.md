@@ -73,7 +73,11 @@ On the Raspberry Pi Zero W, SSH in and perform the following steps:
 ```
 sudo raspi-config nonint do_spi 0
 ```
-2. Install Unicorn Mini Hat library. Select `n` when it gives option to copy examples
+2. Allow pip packages to be installed in global context
+```
+sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+```
+3. Install Unicorn Mini Hat library. Select `n` when it gives option to copy examples
 ```
 git clone https://github.com/pimoroni/unicornhatmini-python
 cd unicornhatmini-python
@@ -87,7 +91,7 @@ git clone https://github.com/dqle/pi-attention.git
 4. Install python packages
 ```
 cd pi-attention/receiver/
-sudo pip3 install -r requirements.txt --break-system-packages
+sudo pip3 install -r requirements.txt
 ```
 5. Add the program as a service
 ```
