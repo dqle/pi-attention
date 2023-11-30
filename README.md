@@ -87,7 +87,7 @@ git clone https://github.com/dqle/pi-attention.git
 4. Install python packages
 ```
 cd pi-attention/receiver/
-sudo pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt --break-system-packages
 ```
 5. Add the program as a service
 ```
